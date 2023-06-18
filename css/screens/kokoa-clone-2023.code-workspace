@@ -1,0 +1,22 @@
+{
+  "folders": [
+	{
+		"path": "../.."
+	},
+	{
+		"name": "kokoa-clone-2023",
+		"path": "../../kokoa-clone-2023"
+	},
+	{
+		"name": "new-kokoa-clone",
+		"path": "../../new-kokoa-clone"
+	},
+	{
+		"name": "new-kokoa-clone",
+		"path": "../../../new-kokoa-clone/new-kokoa-clone"
+	}
+],
+  "settings": {
+    "liveServer.settings.port": 5501
+  }
+}
