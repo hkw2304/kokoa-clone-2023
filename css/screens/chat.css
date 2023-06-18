@@ -1,0 +1,214 @@
+#chat-screen {
+  background-color: #abc1d1;
+  height: 500vh;
+}
+
+#chat-screen .status-bar,
+#chat-screen .alt-header {
+  position: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  top: 0;
+  background-color: #abc1d1;
+}
+#chat-screen .status-bar {
+  z-index: 2;
+}
+#chat-screen .alt-header {
+  z-index: 1;
+}
+@keyframes fadeIn {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+.main-chat {
+  margin-top: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.8s linear;
+}
+.chat__timestamp {
+  color: #fff;
+  background-color: #92a4b2;
+  padding: 15px;
+  border-radius: 25px;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+.message-row {
+  width: 100%;
+  display: flex;
+  margin-bottom: 25px;
+}
+.message-row img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.message__author {
+  margin-bottom: 5px;
+  display: block;
+}
+.messsage__info {
+  display: flex;
+  align-items: flex-end;
+}
+
+.message__bubble {
+  background-color: #fff;
+  padding: 13px;
+  border-radius: 15px;
+  border-top-left-radius: 0px;
+  margin-right: 5px;
+}
+.message__author,
+.message__time {
+  opacity: 0.8;
+  font-size: 13px;
+}
+.message-row--own {
+  justify-content: flex-end;
+}
+@keyframes fadeInBubbleLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+@keyframes fadeInBubbleRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+.messsage__info .message__bubble {
+  animation: fadeInBubbleLeft 0.8s linear;
+}
+.message-row--own .message__bubble {
+  background-color: var(--yellow);
+  border-top-right-radius: 0px;
+  border-top-left-radius: 15px;
+  margin-right: 0;
+  margin-left: 5px;
+  animation: fadeInBubbleRight 0.8s linear;
+}
+.message-row--own .messsage__info {
+  flex-direction: row-reverse;
+}
+.reply {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 25px;
+  box-sizing: border-box;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+}
+.reply .reply__column:first-child {
+  width: 10%;
+}
+.reply .reply__column:last-child {
+  width: 90%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transition: all 0.3s ease-in-out;
+}
+.reply i {
+  opacity: 0.5;
+}
+.reply input {
+  /* 
+    input에 width를 주기위해 부모에 먼저 width 설정  
+   */
+  padding: 15px;
+  width: 100%;
+  border: var(--main-border);
+  border-radius: 20px;
+  box-sizing: border-box;
+  transition: all 1.3s ease-in-out;
+}
+
+.reply__column:last-child > i,
+.reply__column:last-child button {
+  position: absolute;
+}
+.reply__column:last-child > i {
+  right: 45px;
+}
+.reply__column:last-child button {
+  right: 10px;
+}
+.reply__column button {
+  background-color: var(--yellow);
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.reply__column button:focus,
+.reply__column button:active {
+  outline: none;
+}
+.reply__column button i {
+  opacity: 1;
+}
+@keyframes rotateImg {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+.message-row img:hover {
+  animation: rotateImg 1s linear infinite;
+}
+
+.reply .reply__column:first-child,
+.reply .fa-face-smile,
+.reply button {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/*
+만약 요소를 숨기면서도 해당 요소의 공간을 유지하고 싶다면 "visibility: hidden"을 사용하고,
+요소를 완전히 숨기고자 할 때는 "opacity: 0"을 사용하는 것이 적절합니다  
+   */
+.reply:focus-within .reply__column:first-child,
+.reply:focus-within .fa-face-smile,
+.reply:focus-within button {
+  /* 
+    reply 내부에 어떤 요소가 focus되어 있다면
+    form태그에 사용
+   */
+
+  opacity: 0;
+}
+.reply:focus-within .reply__column:last-child {
+  width: 200%;
+  transform: translateX(-3.1%);
+}
+.reply:focus-within {
+  background-color: rgba(0, 0, 0, 0);
+}
